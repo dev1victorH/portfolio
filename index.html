@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para ícones de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Link para arquivo de estilos externo -->
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Website</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+        
+        /* Reset de estilos básicos para todos os elementos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow-x: hidden;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            margin-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 9%;
+            background-color: transparent;
+            filter: drop-shadow(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 3rem;
+            color: #2c3e50;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav a {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-left: 4rem;
+            font-weight: 500;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
+        }
+
+        @media(max-width:995px) {
+            nav {
+                position: absolute;
+                display: none;
+                top: 0;
+                right: 0;
+                width: 40%;
+                border-left: 3px solid #3498db;
+                border-bottom: 3px solid #3498db;
+                border-bottom-left-radius: 2rem;
+                padding: 1rem solid;
+                background-color: #ecf0f1;
+                border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav a {
+                display: block;
+                font-size: 2rem;
+                margin: 3rem 0;
+            }
+
+            nav a:hover,
+            nav a.active {
+                padding: 1rem;
+                border-radius: 0.5rem;
+                border-bottom: 0.5rem solid #3498db;
+            }
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 9% 5rem;
+            font-size: 2rem;
+        }
+
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8rem;
+            background-color: #ecf0f1;
+        }
+
+        .home .home-content h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        span {
+            color: #3498db;
+        }
+
+        .home-content h3 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .home-content p {
+            font-size: 1.6rem;
+            color: #555;
+        }
+
+        .home-img img {
+            position: relative;
+            width: 32vw;
+            border-radius: 50%;
+            box-shadow: 0 0 25px solid #3498db;
+            cursor: pointer;
+            transition: 0.2s linear;
+        }
+
+        .home-img img:hover {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            background-color: transparent;
+            border: 0.2rem solid #3498db;
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 3rem 1.5rem 3rem 0;
+            transition: 0.3s ease;
+            color: #3498db;
+        }
+
+        .social-icons a:hover {
+            color: #ecf0f1;
+            transform: scale(1.3) translateY(-5px);
+            background-color: #3498db;
+            box-shadow: 0 0 25px #3498db;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            background-color: #3498db;
+            border-radius: 4rem;
+            font-size: 1.6rem;
+            color: #fff;
+            letter-spacing: 0.3rem;
+            font-weight: 600;
+            border: 2px solid #3498db;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            background-color: #2980b9;
+            color: #ecf0f1;
+            box-shadow: 0 0 25px #2980b9;
+        }
+
+        .typing-text {
+            font-size: 34px;
+            font-weight: 600;
+            min-width: 280px;
+        }
+
+        .typing-text span {
+            position: relative;
+        }
+
+        .typing-text span::before {
+            content: "software Developer";
+            color: #3498db;
+            animation: words 20s infinite;
+        }
+
+        .typing-text span::after {
+            content: "";
+            background-color: black;
+            position: absolute;
+            width: calc(100% + 8px);
+            height: 100%;
+            border-left: 3px solid black;
+            right: -8;
+            animation: cursor 0.6s infinite;
+        }
+
+        @keyframes cursor {
+            to {
+                border-left: 3px solid #3498db;
+            }
+        }
+
+        @keyframes words {
+            0%, 20% {
+                content: "Web Developer";
+            }
+            21%, 40% {
+                content: "Developer";
+            }
+            41%, 60% {
+                content: "Web Designer";
+            }
+            61%, 80% {
+                content: "Editor";
+            }
+            81%, 100% {
+                content: "Script Writer";
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .home {
+                gap: 4rem;
+            }
+        }
+
+        @media(max-width:995px) {
+            .home {
+                flex-direction: column;
+                margin: 5rem 4rem;
+            }
+
+            .home .home-content h3 {
+                font-size: 2.5rem;
+            }
+
+            .home-content h1 {
+                font-size: 5rem;
+            }
+
+            .home-img img {
+                width: 70vw;
+                margin-top: 4rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Victor Almeida</a>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <div class="home-img">
+            <img src="main.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Prazer, sou <span>Victor</span></h1>
+            <h3 class="typing-text">Sou programador/<span></span></h3>
+            <p>Sou estudante da UNIVASSOURAS e programador iniciante, em busca de ampliar minhas habilidades e evoluir na minha área.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#contact" class="btn">Hire me</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Services</h2>
+        <p>Serviços
+Como estudante de Engenharia de Software e iniciante na área de programação, ainda estou desenvolvendo minhas habilidades e conhecimentos técnicos. Embora ainda não tenha muita experiência prática em programação, estou comprometido em aprender e crescer na área. Atualmente, estou focado em adquirir conhecimentos fundamentais para me tornar um desenvolvedor qualificado.
+
+Meus serviços incluem:
+
+Desenvolvimento de Websites e Aplicações Web (em aprendizado): Em processo de aprendizagem sobre criação de interfaces responsivas e funcionais.
+Criação de Planilhas e Relatórios: Tenho habilidade no uso do pacote Office, especialmente na criação de relatórios e organização de dados.
+Desenvolvimento de Jogos (em aprendizado): Estou aprimorando minhas habilidades na ferramenta Construct2, com foco em jogos simples e interativos.
+Edição de Vídeos: Tenho experiência em edição de vídeos utilizando ferramentas como CapCut e Canva. Posso ajudar a criar conteúdos audiovisuais para redes sociais, apresentações ou outros projetos, oferecendo soluções criativas e profissionais.
+Consultoria em Processos de Programação (em aprendizado): Embora ainda esteja no começo, posso oferecer suporte e orientação em projetos iniciais de programação, com foco em aprendizado e evolução.</p> 
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <p>Atualmente, sou aluno da Universidade de Vassouras, onde estudo Engenharia de Software no terceiro período. Minha formação acadêmica tem sido uma excelente oportunidade para adquirir uma base sólida de conhecimentos essenciais na área de programação e desenvolvimento de sistemas. Entre as disciplinas que estou cursando, destaco algoritmos, banco de dados, arquitetura de software e metodologias ágeis.
+
+Além disso, continuo buscando cursos complementares para enriquecer minha educação, como:
+
+Curso de Desenvolvimento de Jogos Construct2: Focado em aprender a criar jogos digitais.
+Metodologia Ágil Scrum para Gerenciamento de Projetos: Para aplicar as melhores práticas no gerenciamento de projetos de software.
+Curso de Operador Computacional: Aprimoramento no uso de ferramentas computacionais essenciais.
+Curso de Primeiro Emprego: Formação inicial sobre o mercado de trabalho.
+Minha educação está sempre em evolução, e estou ansioso para aprender mais ao longo do meu percurso acadêmico.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p>Embora minha experiência prática na área de programação seja limitada, estou focado em aprender e crescer constantemente. Atualmente, estou desenvolvendo projetos pessoais, como a criação de jogos simples, desenvolvimento de websites e a busca por oportunidades de estágio para ganhar experiência prática. Meu objetivo é aplicar meus conhecimentos acadêmicos em projetos reais, com o objetivo de aprimorar minhas habilidades técnicas e adquirir experiência em equipe.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Estou sempre disponível para conversar sobre projetos, oportunidades de aprendizado ou qualquer outra questão. Fique à vontade para entrar em contato através das minhas redes sociais ou pelo e-mail abaixo:</p>
+        <p>Email: victor.almeida@email.com</p>
+        <p>Telefone: +55 (24) 99202-3517</p>
+    </section>
+</body>
+</html>
+
+<style>
+    .typing-text span::after {
+        content: "";
+        background-color: black;
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        border-left: none;
+        animation: cursor 0.6s infinite;
+        right: -5px;
+    }
+</style></style>
